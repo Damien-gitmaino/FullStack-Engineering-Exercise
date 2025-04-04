@@ -19,7 +19,7 @@ export default function Admin() {
                 setIsLoading(false)
             } catch (err) {
                 setIsLoading(false)
-                window.location.href = '/error'
+                // window.location.href = '/error'
             }
         })()
     }, [])

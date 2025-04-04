@@ -17,6 +17,12 @@ export async function postUsers(req, res) {
             }
         });
 
+        /* Equivalent SQL
+
+            INSERT INTO user (email, password, about_me, street, city, state, zip, birthdate)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        */
+
         return res.status(200).json(user)
     } catch (err) {
         res.status(500).send('An error as occured')

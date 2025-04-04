@@ -24,6 +24,13 @@ export async function updateConfig(req, res) {
                     components: page.components
                 }
             })
+
+            /* Equivalent SQL
+
+                UPDATE onboarding_config
+                SET components = '<valeurs_components_page_1>'
+                WHERE id = '<id_page_1>';
+            */
         }
 
         return res.status(204).send('Update done')
