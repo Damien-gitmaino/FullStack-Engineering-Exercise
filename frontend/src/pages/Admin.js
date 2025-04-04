@@ -40,11 +40,12 @@ export default function Admin() {
             setIsDone(true)
             setIsSubmitting(false)
         } catch (err) {
+            console.log(err)
             setIsSubmitting(false)
-            if (err.response.statusCode === 413)
+            if (err.status && err.status === 413)
                 setIsError(err.response.data)
-            else
-                window.location.href = '/error'
+            // else
+            //    window.location.href = '/error'
         }
     }
 
@@ -70,7 +71,7 @@ export default function Admin() {
     }
 
     return <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <div className="w-1/4 p-6">
+        <form className="w-1/4 p-6" onSubmit={handleSubmit}>
             <p className="mb-3 text-3xl">Admin</p>
 
             {isLoading ? <div className="flex flex-col justify-center items-center">
@@ -111,9 +112,9 @@ export default function Admin() {
                 ))}
             </div>}
 
-            <LoadingButton label={'Save'} loading={isSubmitting} />
+            <LoadingButton type="submit" label={'Save'} loading={isSubmitting} />
             {isError !== '' && <p className="mt-3 text-red-600">{isError}</p>}
             {isDone && <p className="mt-3 text-green-500">The data is updated</p>}
-        </div>
+        </form>
     </div>
 }

@@ -2,7 +2,7 @@ import prisma from "../../services/db";
 
 export async function getAllUsers(req, res) {
     try {
-        const users = await prisma.user.findAll();
+        const users = await prisma.user.findMany();
 
         res.status(200).send(users)
     } catch (err) {

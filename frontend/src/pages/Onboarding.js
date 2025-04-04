@@ -38,13 +38,13 @@ export default function Onboarding() {
         })()
     }, [])
 
-    async function handleSubmitData(data) {
-        setInputs({ ...data })
+    async function handleSubmitData(value) {
+        setInputs({ ...value })
 
-        if (page >= data.length) {
+        if (page > data.length) {
             try {
                 setIsSubmitting(true)
-                await axios.post(`${process.env.REACT_APP_API_URL}/register`, data)
+                await axios.post(`${process.env.REACT_APP_API_URL}/register`, value)
                 setIsDone(true)
                 setIsSubmitting(false)
             } catch (err) {

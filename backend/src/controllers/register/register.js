@@ -3,6 +3,7 @@ import prisma from "../../services/db";
 export async function postUsers(req, res) {
     try {
         const {body} = req;
+
         const user = await prisma.user.create({
             data: {
                 email: body.email,
@@ -12,7 +13,7 @@ export async function postUsers(req, res) {
                 city: body.city,
                 state: body.state,
                 zip: body.zip,
-                birthdate: body.birthdate
+                birthdate: body.birthdate ? new Date(body.birthdate) : null
             }
         });
 

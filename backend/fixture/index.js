@@ -7,14 +7,15 @@ async function main() {
         await prisma.onboardingConfig.createMany({
             data: [{
                 page: 2,
-                component: ['aboutMe']
+                components: ['aboutMe']
             },
             {
                 page: 3,
-                component: ['address']
+                components: ['address']
             }]
         })
     } catch (err) {
+        console.log(err)
         throw new Error(err)
     }
 }
@@ -25,6 +26,7 @@ main()
         // await testGenRef()
     })
     .catch(async (e) => {
+        console.log(e)
         await prisma.$disconnect()
         process.exit(1)
     })

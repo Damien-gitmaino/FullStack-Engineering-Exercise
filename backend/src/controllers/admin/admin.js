@@ -2,7 +2,7 @@ import prisma from "../../services/db";
 
 export async function getConfig(req, res) {
     try {
-        const config = await prisma.onboardingConfig.findAll();
+        const config = await prisma.onboardingConfig.findMany();
 
         return res.status(200).json(config)
     } catch (err) {
@@ -12,15 +12,10 @@ export async function getConfig(req, res) {
 
 export async function updateConfig(req, res) {
     try {
-        if (!req.body.pages)
+        if (!req.body)
             return res.status(413).send('Missing body data')
 
-        for (let page of req.body.pages) {
-            const findAllMistake = page.components.findAll((elem) => elem !== 'aboutMe' || elem !== 'address' || elem !== 'birthdate')
-            
-            if (findAllMistake.length > 0)
-                return res.status(413).send('Error body data')
-
+        for (let page of req.body) {
             await prisma.onboardingConfig.update({
                 where: {
                     id: page.id
