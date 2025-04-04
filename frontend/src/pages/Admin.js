@@ -1,10 +1,15 @@
+/**
+ * Admin Panel Component
+ * Manages form configuration settings for the onboarding process
+ */
 import { useState, useEffect } from "react"
 import LoadingButton from "../components/LoadingButton"
 import axios from "axios";
 import Spinner from "../components/Spinner";
 
 export default function Admin() {
-    const [data, setData] = useState([]);
+    // State management
+    const [data, setData] = useState([]);          // Stores form configuration
     const [isLoading, setIsLoading] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isDone, setIsDone] = useState(false)
@@ -19,7 +24,7 @@ export default function Admin() {
                 setIsLoading(false)
             } catch (err) {
                 setIsLoading(false)
-                // window.location.href = '/error'
+                window.location.href = '/error'
             }
         })()
     }, [])
@@ -44,16 +49,26 @@ export default function Admin() {
             setIsSubmitting(false)
             if (err.status && err.status === 413)
                 setIsError(err.response.data)
-            // else
-            //    window.location.href = '/error'
+            else
+                window.location.href = '/error'
         }
     }
 
+    /**
+     * Finds which page contains a specific component
+     * @param {string} component - Component identifier
+     * @returns {string|null} Page ID containing the component
+     */
     function getPageIdForComponent(component) {
         const found = data.find(d => d.components.includes(component))
         return found ? found.id : null
     }
 
+    /**
+     * Handles checkbox state changes for component selection
+     * @param {string} pageId - ID of the page being modified
+     * @param {string} componentKey - Component identifier being toggled
+     */
     function handleCheckboxChange(pageId, componentKey) {
         setData(prev =>
             prev.map(page => {

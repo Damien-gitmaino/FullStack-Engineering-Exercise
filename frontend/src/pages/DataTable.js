@@ -1,11 +1,17 @@
+/**
+ * DataTable Component
+ * Displays a table of all registered users and their information
+ */
 import { useState, useEffect } from "react"
 import axios from "axios";
 import Spinner from "../components/Spinner";
 
 export default function DataTable() {
-    const [data, setData] = useState([]);
+    // State management for user data and loading state
+    const [data, setData] = useState([]);        // Stores user records
     const [isLoading, setIsLoading] = useState(false)
 
+    // Fetch user data on component mount
     useEffect(() => {
         (async () => {
             try {

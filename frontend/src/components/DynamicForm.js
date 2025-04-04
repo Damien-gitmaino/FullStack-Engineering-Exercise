@@ -1,6 +1,19 @@
 import React, { useState } from "react"
 import LoadingButton from "./LoadingButton"
 
+/**
+ * DynamicForm Component
+ * Renders dynamic form fields based on configuration
+ * 
+ * @param {Object} props
+ * @param {Object} props.data - Current form data
+ * @param {Function} props.handleChange - Form submission handler
+ * @param {Array} props.components - List of components to render
+ * @param {boolean} props.isNextPage - Flag indicating if there's a next page
+ * @param {boolean} props.isSubmitting - Loading state during form submission
+ * @param {Function} props.handlePrevious - Handler for previous page navigation
+ */
+
 export function AboutMeInput({ value, handleChange }) {
     return (
         <div className="mb-3">

@@ -1,3 +1,8 @@
+/**
+ * NotFound Page Component
+ * Displays 404 Not Found page
+ * Used when requested route doesn't exist
+ */
 export default function NotFound() {
     return <section className="bg-white">
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">

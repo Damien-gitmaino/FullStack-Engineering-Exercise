@@ -1,9 +1,21 @@
 import { useState } from "react"
 
+/**
+ * Static Form Component
+ * Renders the initial registration form with email and password fields
+ * 
+ * @param {Object} props
+ * @param {Object} props.data - Current form data
+ * @param {Function} props.handleChange - Callback for form submission
+ */
 export default function StaticForm({ data, handleChange }) {
     const [email, setEmail] = useState(data.email);
     const [password, setPassword] = useState(data.password);
 
+    /**
+     * Handles form submission
+     * @param {Event} event - Form submission event
+     */
     function handleSubmit(event) {
         event.preventDefault();
 

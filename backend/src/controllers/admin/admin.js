@@ -1,5 +1,15 @@
+/**
+ * Admin Controller
+ * Handles administrative operations for onboarding configuration
+ */
+
 import prisma from "../../services/db";
 
+/**
+ * Retrieves current onboarding configuration
+ * @param {Request} req - Express request object
+ * @param {Response} res - Express response object
+ */
 export async function getConfig(req, res) {
     try {
         const config = await prisma.onboardingConfig.findMany();
@@ -10,6 +20,11 @@ export async function getConfig(req, res) {
     }
 }
 
+/**
+ * Updates onboarding configuration
+ * @param {Request} req - Express request object
+ * @param {Response} res - Express response object
+ */
 export async function updateConfig(req, res) {
     try {
         if (!req.body)

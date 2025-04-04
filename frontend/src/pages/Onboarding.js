@@ -1,3 +1,7 @@
+/**
+ * Onboarding Component
+ * Handles multi-step user registration process with dynamic form generation
+ */
 import React, { useState, useEffect } from "react"
 import StaticForm from "../components/StaticForm";
 import DoneIcon from "../components/icons/DoneIcon";
@@ -6,10 +10,12 @@ import Spinner from "../components/Spinner";
 import axios from "axios";
 
 export default function Onboarding() {
-    const [data, setData] = useState([])
+    // State management for form data and UI control
+    const [data, setData] = useState([])           // Stores form configuration from API
     const [isLoading, setIsLoading] = useState(false);
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useState(0);           // Current page in multi-step form
     const [inputs, setInputs] = useState({
+        // Initial form state
         email: '',
         password: '',
         aboutMe: '',
@@ -23,6 +29,7 @@ export default function Onboarding() {
     const [isDone, setIsDone] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false)
 
+    // Fetch form configuration on component mount
     useEffect(() => {
         (async () => {
             try {
@@ -38,6 +45,10 @@ export default function Onboarding() {
         })()
     }, [])
 
+    /**
+     * Handles form submission for each step
+     * @param {Object} value - Form data to be submitted
+     */
     async function handleSubmitData(value) {
         setInputs({ ...value })
 

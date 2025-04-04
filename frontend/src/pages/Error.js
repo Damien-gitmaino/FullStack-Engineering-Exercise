@@ -1,3 +1,8 @@
+/**
+ * Error Page Component
+ * Displays 500 Internal Server Error page
+ * Used when server-side errors occur
+ */
 export default function Error() {
     return <section className="bg-white">
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
