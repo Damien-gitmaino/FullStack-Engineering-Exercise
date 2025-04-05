@@ -14,6 +14,11 @@ import prisma from "../../services/db";
 export async function getAllUsers(req, res) {
     try {
         const users = await prisma.user.findMany();
+
+        /* SQL statement
+            SELECT * FROM user;
+        */
+
         res.status(200).send(users)
     } catch (err) {
         res.status(500).send("An error occurded")

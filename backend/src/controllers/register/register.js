@@ -17,7 +17,7 @@ export async function postUsers(req, res) {
             }
         });
 
-        /* Equivalent SQL
+        /* SQL Statement
 
             INSERT INTO user (email, password, about_me, street, city, state, zip, birthdate)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)

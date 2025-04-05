@@ -40,7 +40,7 @@ export async function updateConfig(req, res) {
                 }
             })
 
-            /* Equivalent SQL
+            /* SQL Statement
 
                 UPDATE onboarding_config
                 SET components = '<valeurs_components_page_1>'
