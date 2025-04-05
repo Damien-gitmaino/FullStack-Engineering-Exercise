@@ -5,6 +5,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios";
 import Spinner from "../components/Spinner";
+import dayjs from "dayjs";
 
 export default function DataTable() {
     // State management for user data and loading state
@@ -77,10 +78,10 @@ export default function DataTable() {
                                 {`${user.street}, ${user.city} ${user.state} ${user.zip}`}
                             </td>
                             <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                {user.birthdate}
+                                {user.birthdate && dayjs(user.birthdate).format('MM/DD/YYYY')}
                             </td>
                             <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                {user.createdAt}
+                                {user.createdAt && dayjs(user.createdAt).format('MM/DD/YYYY HH:mm')}
                             </td>
                         </tr>)}
 
